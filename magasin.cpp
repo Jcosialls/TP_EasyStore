@@ -55,8 +55,9 @@ std::string display_Clients(const Magasin& mag){
 }
 
 
-void found_Product(const Magasin& mag){
+std::string found_Product(const Magasin& mag){
     std::string title;
+    std::string ref;
     bool found = false;
     std::cout<<"quel produit voulez vous selectionner ? : ";
     std::cin>>title;
@@ -64,8 +65,12 @@ void found_Product(const Magasin& mag){
     for(auto i = 0; i < mag.products().size(); i++){
         if(title == mag.products().at(i).gettitle()){
             std::cout<< display_Product(mag.products().at(i));
-            found = true;
-        }
+             ref = mag.products().at(i).getref_product();
+                found = true;
+            }
+            if(found == true){
+                return ref;
+            }
     }
     while(found == false){
         std::cout<< "L'objet n'existe pas" << std::endl;
@@ -75,12 +80,62 @@ void found_Product(const Magasin& mag){
         for(auto i = 0; i < mag.products().size(); i++){
             if(title == mag.products().at(i).gettitle()){
                 std::cout<< display_Product(mag.products().at(i));
+                ref = mag.products().at(i).getref_product();
                 found = true;
+            }
+            if(found == true){
+                return ref;
+            }
+        }
+    }
+}
+
+std::string found_Client(const Magasin& mag){
+    std::string name;
+    std::string id;
+    bool found = false;
+    std::cout<<"Entrer le nom du client : ";
+    std::cin>>name;
+    
+    for(auto i = 0; i < mag.clients().size(); i++){
+        if(name == mag.clients().at(i).lastname()){
+            std::cout<< display_Client(mag.clients().at(i));
+            id = mag.clients().at(i).id();
+                found = true;
+            }
+            if(found == true){
+                return ref;
+            }
+    }
+    while(found == false){
+        std::cout<< "le client n'existe pas" << std::endl;
+        std::cout<<"Entrer le nom du client : ";
+        std::cin>>name;
+        
+        for(auto i = 0; i < mag.clients().size(); i++){
+            if(name == mag.clients().at(i).lastname()){
+                std::cout<< display_Client(mag.clients().at(i));
+                id = mag.clients().at(i).id();
+                found = true;
+            }
+            if(found == true){
+                return ref;
             }
         }
     }
 
 }
+
+void add_Prod_to_Client(const Magasin& mag){
+    std::string ref_product;
+    std::string id_client;
+    ref_product = found_Product(mag);
+    id_client = found_Client(mag);
+    for(auto i = 0; i<mag.clients().size(); i++){
+        if(id)
+    }
+}
+
 //-------Overloading Ops--------//
 std::ostream& operator<<(std::ostream& os, const Magasin& mag){
     std::string to_display = display_Products(mag) + display_Clients(mag); 

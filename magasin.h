@@ -22,6 +22,8 @@ class Magasin {
 //-------Helper Functions--------//
 std::string display_Products(const Magasin& mag);
 std::string display_Clients(const Magasin& mag);
-void found_Product(const Magasin& mag);
+std::string found_Product(const Magasin& mag);
+std::string found_Client(const Magasin& mag);
+void add_Prod_to_Client(const Magasin& mag);
 //-------Overloading Ops--------//
 std::ostream& operator<<(std::ostream& os, const Magasin& mag);
