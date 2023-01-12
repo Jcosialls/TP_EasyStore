@@ -2,7 +2,7 @@
 
 # Choose your compiler g++/clang++
 CXX        = g++
-CXXFLAGS   = -Wall -Wextra -std=c++11 
+CXXFLAGS   = -Wall -Wextra -std=c++20 
 DEPFLAGS   = -MMD
 LDFLAGS    = 
 # Replace your_files.cpp with the list of cpp files that need to be compiled

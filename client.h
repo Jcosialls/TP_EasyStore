@@ -21,10 +21,11 @@ class Client {
 		std::vector<Product> _shopping_cart;
 
 };
+//-------Helper Functions--------//
 std::string display_ShoppingCart(Client client);
-
 std::string display_Client(Client client);
-
+std::string entrerClient(std::vector<Client>& clients);
+//-------Overloading Ops--------//
 std::ostream& operator<<(std::ostream& os, Client client);
 
-std::string entrerClient(std::vector<Client>& clients);
+

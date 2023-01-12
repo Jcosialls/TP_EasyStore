@@ -11,23 +11,23 @@ Product::Product(double price_unit, int quantity,
 
 }
 
-int Product::getquantity() {
+int Product::getquantity()const {
 	return _quantity;
 }
 
-double Product::getprice_unit() {
+double Product::getprice_unit()const {
 	return _price_unit;
 }
 
-std::string Product::getdescription() {
+std::string Product::getdescription()const {
 	return _description;
 }
 
-std::string Product::gettitle() {
+std::string Product::gettitle()const {
 	return _title;
 }
 
-std::string Product::getref_product() {
+std::string Product::getref_product()const {
 	return _ref_product;
 }
 
@@ -73,7 +73,7 @@ std::string display_Product(Product product) {
 }
 
 //-------Overloading Ops--------//
-bool operator == (Product& product1, Product& product2)  { // check for equality
+bool operator == (const Product& product1, const Product& product2)  { // check for equality
     if(product1.getref_product() == product2.getref_product()) {
         return true;
     }

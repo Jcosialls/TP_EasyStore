@@ -15,7 +15,7 @@ int main() {
 
 	Magasin carrouf(mesClients, mesBonsProduitsBio, mesCommandes);
 
-	//std::cout<<carrouf;
+	std::cout<<mesClients.at(0)<< mesClients.at(1);
 
 	mesClients.at(0).add_to_shopping_cart(mesBonsProduitsBio.at(0));
 	mesClients.at(0).add_to_shopping_cart(mesBonsProduitsBio.at(2));
@@ -23,8 +23,11 @@ int main() {
 	mesClients.at(0).add_to_shopping_cart(mesBonsProduitsBio.at(3));
 
 	std::cout<< mesClients.at(0);
-	found_Product(carrouf);
+	//found_Product(carrouf);
+	Client client("JD_c02", "Jean", "David", shopping_cart);
+	carrouf.add_client(client);
 
+	std::cout<<carrouf;
 
 	return 0;
 }

@@ -12,11 +12,11 @@ private:
 	public:
 	Product(double price_unit, int quantity,
 	std::string description, std::string title, std::string ref_product);
-	int getquantity();
-	double getprice_unit();
-	std::string getdescription();
-	std::string gettitle();
-	std::string getref_product();
+	int getquantity()const;
+	double getprice_unit()const;
+	std::string getdescription()const;
+	std::string gettitle()const;
+	std::string getref_product()const;
 	void setquantity(int quantity);
 	void setprice_unit(double price_unit);
 };
@@ -25,5 +25,5 @@ private:
 std::string display_Product(Product product);
 
 //-------Overloading Ops--------//
-bool operator == (Product& product1, Product& product2);
+bool operator == (const Product& product1, const Product& product2);
 std::ostream& operator<<(std::ostream& os, Product product);

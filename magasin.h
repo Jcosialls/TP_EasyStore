@@ -16,9 +16,12 @@ class Magasin {
 		std::vector<Client> clients()const;
 		std::vector<Product> products()const;
 		std::vector<Order> orders()const;
-		void add_product(Product new_product);
+		void add_product(const Product& new_product);
+		void add_client(const Client& new_client);
 };
-
+//-------Helper Functions--------//
 std::string display_Products(const Magasin& mag);
+std::string display_Clients(const Magasin& mag);
 void found_Product(const Magasin& mag);
-std::ostream& operator<<(std::ostream& os, Magasin mag);
+//-------Overloading Ops--------//
+std::ostream& operator<<(std::ostream& os, const Magasin& mag);

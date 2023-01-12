@@ -1,5 +1,5 @@
 #include <iostream>
-//#include <algorithm>
+#include <algorithm>
 #include <vector>
 #include "client.h"
 
@@ -31,23 +31,21 @@ void Client::erase_shopping_cart(){
 	_shopping_cart.clear();
 }
 
-//----------Fonctions helper-----------//
+//-------Helper Functions--------//
 std::string display_ShoppingCart(Client client){
 	std::string s;
-	int quantity= 0;
+
 	std::vector<Product> copy_cart = client.shopping_cart();
 	auto it = copy_cart.begin();
-	do{
-		for(auto it2 = copy_cart.begin(); it2 != copy_cart.end(); it2++){
-			if(*it == *it2){
-				quantity ++;
-			}
-		}
-		s+= it->gettitle() + " x";
-		s+= std::to_string(quantity);
+	while( it!= copy_cart.end()){
+		Product product = *it;
+
+		s+= product.gettitle() + " x";
+		//s+= std::to_string(std::count(copy_cart.begin(), copy_cart.end(), *it));
+		auto erased = std::erase_if(copy_cart, [product](Product p) {return p==product;}); //need g++ v20
+		s+= std::to_string(erased);
 		s+= "\n";
-		copy_cart.erase(it);
-	}while( it!= copy_cart.end());
+	}
 	std::cout<<s;
 	return s;
 }
@@ -81,7 +79,7 @@ std::string entrerClient(std::vector<Client>& clients) {
 		std::cout << new_client;
 		return id_client;
 	}
-
+	return "rien";
 }
 
 std::string display_Client(Client client) {
@@ -90,6 +88,8 @@ std::string display_Client(Client client) {
 	return c;
 }
 
+
+//----------Overloading Ops----------//
 std::ostream& operator<<(std::ostream& os, Client client) {
 	std::string to_display = display_Client(client);
 	os << to_display << std::endl;
