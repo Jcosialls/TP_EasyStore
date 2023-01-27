@@ -64,7 +64,7 @@ std::string display_Product(Product product) {
 	std::ostringstream out;
 	out<<std::fixed;
 	out<<std::setprecision(2);
-	std::string p = "Titre : " + product.gettitle() + " ; Description : " + product.getdescription();
+	std::string p = "Titre : " + product.gettitle(); //+ " ; Description : " + product.getdescription();
 	out<<product.getprice_unit();
 	p += " ; Prix : " + out.str();
 	p += " ; Quantite : " + std::to_string(product.getquantity());

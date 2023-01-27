@@ -5,14 +5,16 @@
 
 class Client {
 	public:
-		Client(std::string id, std::string firstname, std::string lastname,std::vector<Product> shopping_cart);
+		Client(std::string id = "defaultid", std::string firstname= "defaultfirstname",
+				 std::string lastname = "defaultlastname");
 		std::string id()const;
 		std::string firstname()const;
 		std::string lastname()const;
 		std::vector<Product> shopping_cart()const;
-		void add_to_shopping_cart(Product product);
+		void add_to_shopping_cart(Product& product);
+		void del_to_shopping_cart(Product& product);
 		void erase_shopping_cart();
-		void modify_quantity();
+		void modify_quantity(Product& product, int new_quantity);
 
 	private:
 		std::string _id;
@@ -24,8 +26,9 @@ class Client {
 //-------Helper Functions--------//
 std::string display_ShoppingCart(Client client);
 std::string display_Client(Client client);
-std::string entrerClient(std::vector<Client>& clients);
+
 //-------Overloading Ops--------//
+bool operator == (const Client& c1, const Client& c2);
 std::ostream& operator<<(std::ostream& os, Client client);
 
 

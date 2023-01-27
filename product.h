@@ -10,8 +10,9 @@ private:
 	std::string _ref_product;
 
 	public:
-	Product(double price_unit, int quantity,
-	std::string description, std::string title, std::string ref_product);
+	Product(double price_unit = 0, int quantity = 0,
+			std::string description = "defaultdescription", std::string title = "defaultdescription",
+			std::string ref_product = "defaultdescription");
 	int getquantity()const;
 	double getprice_unit()const;
 	std::string getdescription()const;
